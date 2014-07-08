@@ -1,4 +1,7 @@
 ip: "192.168.0.101"
+username: "username"
+password: "password"
 webroot: "/Users/username/dev/www/"
-db_password: "password"
+private_key: "/Users/username/.ssh/id_rsa"
+public_key: "/Users/username/.ssh/id_rsa.pub"
 runlist: ["cmd_lamp"]
