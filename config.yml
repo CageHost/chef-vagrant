@@ -1,0 +1,7 @@
+ip: "192.168.0.101"
+username: "acrawford"
+password: "password"
+webroot: "/Users/acrawford/dev/www/"
+private_key: "/Users/acrawford/.ssh/id_rsa"
+public_key: "/Users/acrawford/.ssh/id_rsa.pub"
+runlist: ["cmd_lamp"]

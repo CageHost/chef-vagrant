@@ -1,0 +1,4 @@
+ip: "192.168.0.101"
+webroot: "/Users/username/dev/www/"
+db_password: "password"
+runlist: ["cmd_lamp"]
