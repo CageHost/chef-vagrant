@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: cmd_lamp
+# Cookbook Name:: lamp
 # Recipe:: default
 #
 # Copyright (C) 2014 YOUR_NAME
@@ -44,19 +44,16 @@ for p in packages do
   end
 end
 
-execute "gem install compass" do
+#TODO: use a notification attribute instead of "gem list compass -i"
+
+execute "gem install" do
   command "gem install compass"
-  action :run
+  not_if "gem list compass -i"
 end
 
-execute "npm install grunt" do
-  command "npm install -g grunt-cli"
-  action :run
-end
-
-execute "npm install forever" do
-  command "npm install -g forever"
-  action :run
+execute "npm install" do
+  command "npm install -g grunt-cli forever"
+  not_if "gem list compass -i"
 end
 
 # Add templates, fix permissions and add key
@@ -75,11 +72,6 @@ template "/usr/local/bin/chweb" do
   mode "0755"
 end
 
-execute "web permissions" do
-  command "chown -R root:www-data /var/www && chmod 2775 /var/www"
-  action :run
-end
-
 directory "/etc/php5/apache2" do
   owner "root"
   group "root"
@@ -94,10 +86,11 @@ template "/etc/php5/apache2/php.ini" do
   mode "0644"
 end
 
-if !node['cmd_lamp']['public_key'].nil? && !node['cmd_lamp']['public_key'].empty?
-  execute 'devadd' do
-    command "devadd #{node['cmd_lamp']['username']} \"#{node['cmd_lamp']['public_key']}\""
-  end
+# Add the user if they do not exist
+
+execute 'devadd' do
+  command "devadd #{node['lamp']['username']} \"#{node['lamp']['public_key']}\""
+  not_if "id -u #{node['lamp']['username']}"
 end
 
 # Create virtual hosts
