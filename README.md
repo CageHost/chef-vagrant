@@ -1,14 +1,27 @@
-# Vagrant Environment, Chef Automated
+# Vagrant Chef Environment
 
-## Requirements
+## Installation
 
-VirtualBox
-Vagrant
-SSH client
+##### Requirements
+
+- VirtualBox
+- Vagrant
+- SSH client
+
+1. Clone or download the environment
+2. Copy config.yml.dist to config.yml, and update the configuration
+3. From a command line, navigate to the environment and start the server.
+
+```
+git clone git@github.com:cmdlabs/vagrant-chef.git
+# edit your config.yml
+cd vagrant-chef
+vagrant up
+```
 
 ## Supported Platforms
 
-Debian 7 
+Debian 7
 
 ## Attributes
 
@@ -45,11 +58,11 @@ Include `lamp` in your node's `run_list`:
 
 1. Fork the repository on Github
 2. Create a named feature branch (i.e. `add-new-recipe`)
-3. Write you change
+3. Write your change
 4. Write tests for your change (if applicable)
 5. Run the tests, ensuring they all pass
 6. Submit a Pull Request
 
 ## License and Authors
 
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+Author:: Alex Crawford (acrawford@cmdagency.com)
