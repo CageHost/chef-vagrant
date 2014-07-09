@@ -1,27 +1,33 @@
 # Vagrant Chef Environment
 
+This environment will create a pre-configured Linux server including Apache, MySQL, PHP, Composer, and NodeJS.
+
 ## Installation
 
-##### Requirements
+##### Requirements:
 
-- VirtualBox
+- Git 
+- Virtualbox
 - Vagrant
-- SSH client
 
 1. Clone or download the environment
 2. Copy config.yml.dist to config.yml, and update the configuration
-3. From a command line, navigate to the environment and start the server.
+  - If you need to create a public / private key pair, you can use the following command:
+    - `ssh-keygen -t rsa -C "your_email@example.com"`
+3. From a command line, navigate to the environment and use "vagrant up" to start the server.
+
+##### Example:
 
 ```
 git clone git@github.com:cmdlabs/vagrant-chef.git
-# edit your config.yml
+# update your config.yml
 cd vagrant-chef
 vagrant up
 ```
 
 ## Supported Platforms
 
-Debian 7
+Windows, Mac
 
 ## Attributes
 
