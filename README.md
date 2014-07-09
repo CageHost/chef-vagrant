@@ -1,6 +1,10 @@
-# Vagrant environment, Chef automated
+# Vagrant Environment, Chef Automated
 
-Description here
+## Requirements
+
+VirtualBox
+Vagrant
+SSH client
 
 ## Supported Platforms
 
