@@ -1,6 +1,6 @@
 # Vagrant Chef Environment
 
-This environment will create a pre-configured Linux server including Apache, MySQL, PHP, Composer, and NodeJS.
+The default environment contains a pre-configured Linux server including Apache, MySQL, PHP, Composer, and NodeJS.
 
 ## Installation
 
