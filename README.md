@@ -1,20 +1,38 @@
 # Vagrant Chef Environment
 
-The default environment contains a pre-configured Linux server including Apache, MySQL, PHP, Composer, and NodeJS.
+A development platform for PHP, Ruby, and NodeJS applications, which contains a pre-configured Linux server with the following software: 
+
+Default:
+
+- Apache 2.2
+- NGINX 1.2.1
+- MySQL 5.5
+- PHP 5.4 + Composer
+- NodeJS 0.10.26 + NPM
+- Ruby 1.9.3 + RVM
+- Grunt 0.1.13
+- Capistrano 2.15.5
+- Git, Imagemagick, Sendmail
+- PHP Extensions (apc, curl, mcrypt, imagick)
+
+Optional:
+
+- Java 1.7.0 (for Solr)
+- ElasticSearch
+
+Please review the "lamp" cookbook for more specific installation details.
 
 ## Installation
 
-##### Requirements:
+##### Required Software:
 
-- Git 
-- Virtualbox
-- Vagrant
+- [Virtualbox](https://www.virtualbox.org/)
+- [Vagrant](http://www.vagrantup.com/)
 
-1. Clone or download the environment
-2. Copy config.yml.dist to config.yml, and update the configuration
-  - If you need to create a public / private key pair, you can use the following command:
-    - `ssh-keygen -t rsa -C "your_email@example.com"`
-3. From a command line, navigate to the environment and use "vagrant up" to start the server.
+1. Download or clone this repository
+2. Copy config.yml.dist to config.yml, and modify your configuration variables
+  - If you don't know your public key path, [please read](https://help.github.com/articles/generating-ssh-keys).
+3. From a command line, navigate to your environment and start the server
 
 ##### Example:
 

@@ -16,8 +16,10 @@ recipes = [
 	"apache2::mod_php5",
 	"apache2::mod_rewrite",
 	"mysql::server",
+  "nginx",
 	"composer",
 	"nodejs::install_from_source",
+  "rvm::system"
 ]
 
 for r in recipes do
@@ -52,11 +54,6 @@ end
 execute "npm install" do
   command "npm install -g grunt-cli"
   not_if "npm list -g grunt-cli"
-end
-
-execute "gem install" do
-  command "rvmsudo gem install compass capistrano"
-  not_if "gem list compass -i"
 end
 
 # Add templates, fix permissions and add key
@@ -109,7 +106,7 @@ end
   end if File.directory?(path)
 end
 
-# Nginx stuff
+# Nginx server blocks
 
 template "/etc/nginx/sites-available/proxy" do
   source "nginx_proxy.erb"
@@ -123,7 +120,33 @@ execute "nginx enable proxy" do
   not_if "stat /etc/nginx/sites-enabled/proxy"
 end
 
-# Add the user if they do not exist
+template "/etc/nginx/sites-available/solr" do
+  source "nginx_solr.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+end
+
+execute "nginx enable solr" do
+  command "nxensite solr"
+  not_if "stat /etc/nginx/sites-enabled/solr"
+end
+
+# Create virtual hosts
+
+apache_vhosts = data_bag("apache_vhosts")
+
+apache_vhosts.each do |i|
+  vhost = data_bag_item("apache_vhosts", i)
+  web_app vhost["id"] do
+    template "site.conf.erb"
+    server_name vhost["id"]
+    docroot "/var/www/" + vhost["dir"]
+    port vhost["port"]
+  end
+end
+
+# Add user if they do not exist
 
 if node['lamp']['username'].length > 0
   execute 'devadd' do
@@ -132,16 +155,3 @@ if node['lamp']['username'].length > 0
   end
 end
 
-# Create virtual hosts
-
-apache_vhosts = data_bag("apache_vhosts")
-
-apache_vhosts.each do |i|
-	vhost = data_bag_item("apache_vhosts", i)
-	web_app vhost["id"] do
-		template "site.conf.erb"
-	  server_name vhost["id"]
-	  docroot "/var/www/" + vhost["dir"]
-    port vhost["port"]
-	end
-end
