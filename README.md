@@ -1,8 +1,10 @@
-# Vagrant Chef Environment
+# CMD Vagrant Chef Environment
+
+### Overview:
 
 A development platform for PHP, Ruby, and NodeJS applications, which creates a pre-configured Linux server including the following software: 
 
-Default:
+#### Default:
 
 - Apache 2.2
 - NGINX 1.2.1
@@ -15,7 +17,7 @@ Default:
 - Git, Imagemagick, Sendmail
 - PHP Extensions (apc, curl, mcrypt, imagick)
 
-Optional:
+#### Optional:
 
 - Java 1.7.0 (for Solr)
 - ElasticSearch
@@ -24,7 +26,7 @@ Please review the [CMD LAMP cookbook](https://github.com/cmd-cookbooks/lamp) for
 
 ## Installation
 
-##### Required Software:
+### Required Software:
 
 - [Virtualbox](https://www.virtualbox.org/)
 - [Vagrant](http://www.vagrantup.com/)
@@ -34,7 +36,7 @@ Please review the [CMD LAMP cookbook](https://github.com/cmd-cookbooks/lamp) for
   - If you don't know your public key path, [please read](https://help.github.com/articles/generating-ssh-keys).
 3. From a command line, navigate to your environment and start the server
 
-##### Example:
+### Example:
 
 ```
 git clone git@github.com:cmdlabs/vagrant-chef.git
