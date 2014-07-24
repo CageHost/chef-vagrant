@@ -28,6 +28,11 @@ end
 
 packages = [
 	"nano",
+  "unzip",
+  "aptitude",
+  "imagemagick",
+  "php5-common",
+  "php5-cgi",
 	"php5-curl",
 	"php5-mcrypt",
 	"php5-mysql",
@@ -35,7 +40,7 @@ packages = [
 	"php5-imagick",
 	"php-apc",
   "sendmail-bin",
-	"sendmail",
+	"sendmail"
 ]
 
 for p in packages do
@@ -44,15 +49,13 @@ for p in packages do
   end
 end
 
-#TODO: use a notification attribute instead of "gem list compass -i"
-
-execute "gem install" do
-  command "gem install compass"
-  not_if "gem list compass -i"
+execute "npm install" do
+  command "npm install -g grunt-cli"
+  not_if "npm list -g grunt-cli"
 end
 
-execute "npm install" do
-  command "npm install -g grunt-cli forever"
+execute "gem install" do
+  command "rvmsudo gem install compass capistrano"
   not_if "gem list compass -i"
 end
 
@@ -86,22 +89,59 @@ template "/etc/php5/apache2/php.ini" do
   mode "0644"
 end
 
+directory "/var/www" do
+  owner "root"
+  group "www-data"
+  mode "2775"
+  action :create
+end
+
+%w[ "/var/www/**/*" ].each do |path|
+  file path do
+    owner "root"
+    group "www-data"
+    mode "2775"
+  end if File.file?(path)
+  directory path do
+    owner "root"
+    group "www-data"
+    mode "0664"
+  end if File.directory?(path)
+end
+
+# Nginx stuff
+
+template "/etc/nginx/sites-available/proxy" do
+  source "nginx_proxy.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+end
+
+execute "nginx enable proxy" do
+  command "nxensite proxy"
+  not_if "stat /etc/nginx/sites-enabled/proxy"
+end
+
 # Add the user if they do not exist
 
-execute 'devadd' do
-  command "devadd #{node['lamp']['username']} \"#{node['lamp']['public_key']}\""
-  not_if "id -u #{node['lamp']['username']}"
+if node['lamp']['username'].length > 0
+  execute 'devadd' do
+    command "devadd #{node['lamp']['username']} \"#{node['lamp']['public_key']}\""
+    not_if "id -u #{node['lamp']['username']}"
+  end
 end
 
 # Create virtual hosts
 
-sites = data_bag("sites")
+apache_vhosts = data_bag("apache_vhosts")
 
-sites.each do |s|
-	site = data_bag_item("sites", s)
-	web_app site["id"] do
+apache_vhosts.each do |i|
+	vhost = data_bag_item("apache_vhosts", i)
+	web_app vhost["id"] do
 		template "site.conf.erb"
-	  server_name site["id"]
-	  docroot "/var/www/" + site["dir"]
+	  server_name vhost["id"]
+	  docroot "/var/www/" + vhost["dir"]
+    port vhost["port"]
 	end
 end

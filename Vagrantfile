@@ -55,7 +55,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       }
     }
     chef.run_list = vconfig['runlist']
-    chef.log_level = "debug"
+    chef.log_level = vconfig['log_level']
   end
 
 end
