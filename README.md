@@ -1,8 +1,8 @@
 # CMD Vagrant Chef Environment
 
-#### A development platform for PHP, Ruby, and NodeJS applications which creates a pre-configured Linux server containing the following software:
+#### A development platform for PHP, Ruby, and NodeJS applications, which creates a pre-configured Linux server containing the following:
 
-#### Default:
+#### Default Software:
 
 - Apache 2.2
 - NGINX 1.2.1
@@ -15,7 +15,7 @@
 - Git, Imagemagick, Sendmail
 - PHP Extensions (apc, curl, mcrypt, imagick)
 
-#### Optional:
+#### Optional Software:
 
 - Java 1.7.0 (for Solr)
 - ElasticSearch
