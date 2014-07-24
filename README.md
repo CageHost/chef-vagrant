@@ -1,6 +1,6 @@
 # Vagrant Chef Environment
 
-A development platform for PHP, Ruby, and NodeJS applications, which contains a pre-configured Linux server with the following software: 
+A development platform for PHP, Ruby, and NodeJS applications, which creates a pre-configured Linux server including the following software: 
 
 Default:
 
@@ -20,7 +20,7 @@ Optional:
 - Java 1.7.0 (for Solr)
 - ElasticSearch
 
-Please review the "lamp" cookbook for more specific installation details.
+Please review the [CMD LAMP cookbook](https://github.com/cmd-cookbooks/lamp) for specific software installation details.
 
 ## Installation
 
