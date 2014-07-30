@@ -1,2 +1,4 @@
 /cookbooks/
 config.yml
+nodes/*.json
+sites/*.json

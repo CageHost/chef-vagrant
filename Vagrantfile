@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder vconfig['webroot'], "/var/www", group: "www-data", mount_options: ["umask=0002", "dmode=2775", "fmode=0664"]
 
   config.ssh.forward_agent = true
-  config.ssh.private_key_path = ['~/.vagrant.d/insecure_private_key']
+# config.ssh.private_key_path = ['~/.vagrant.d/insecure_private_key']
 
   config.omnibus.chef_version = :latest
 
@@ -66,14 +66,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       },
       "nodejs" => {
         "version" => "0.10.26"
-      },
-      "rvm" => {
-        "global_gems" => [
-          { "name" => "compass" },
-          { "name" => "capistrano",
-            "version" => "2.15.5"
-          }
-        ]
       },
       "lamp" => {
         "username" => vconfig['username'],
