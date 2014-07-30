@@ -1,0 +1,25 @@
+{
+	"build-essential": {
+		"compile_time": true
+    },
+     "mysql": {
+		"allow_remote_root": true,
+		"server_root_password": "password",
+		"server_debian_password": "password",
+		"server_repl_password": "password"
+    },
+	"run_list": [
+		  "apt",
+		  "build-essential",
+		  "git",
+		  "php",
+		  "apache2",
+		  "apache2::mod_php5",
+		  "apache2::mod_rewrite",
+		  "mysql::server",
+		  "mysql::client",
+		  "composer",
+		  "nodejs::install_from_source",
+		  "cmd_redmine"
+	]
+}
