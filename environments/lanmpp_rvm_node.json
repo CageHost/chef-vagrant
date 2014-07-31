@@ -1,0 +1,47 @@
+{
+	"__environment": "lanmpp_rvm_node",
+	"build-essential": {
+		"compile_time": true
+    },
+    "nginx": {
+		"default_site_enabled": false
+	},
+	"apache": {
+		"listen_ports": [
+			"8080"
+		]
+	},
+     "mysql": {
+		"allow_remote_root": true,
+		"server_root_password": "password",
+		"server_debian_password": "password",
+		"server_repl_password": "password"
+    },
+	"postgresql": {
+		"password": {
+			"postgres": "password"
+		},
+		"pg_hba": [
+			{
+				"type": "local",
+				"db": "all",
+				"user": "postgres",
+				"addr": null,
+				"method": "md5"
+			}
+		]
+	},
+    "nodejs": {
+		"version": "0.10.26",
+		"install_method": "source"
+	},
+	"rvm": {
+		"rubies": [
+			"bundler",
+			"nokogiri"
+		]
+	},
+	"run_list": [
+		  "redmine"
+	]
+}

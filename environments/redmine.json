@@ -1,4 +1,5 @@
 {
+	"__environment": "redmine",
 	"build-essential": {
 		"compile_time": true
     },

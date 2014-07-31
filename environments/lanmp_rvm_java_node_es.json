@@ -1,0 +1,52 @@
+{
+	"__environment": "lanmp_rvm_java_node_es",
+	"build-essential": {
+		"compile_time": true
+	},
+	"nginx": {
+		"default_site_enabled": false
+	},
+	"apache": {
+		"listen_ports": [
+			"8080"
+		]
+	},
+	"mysql": {
+		"allow_remote_root": false,
+		"server_root_password": "password",
+		"server_debian_password": "password",
+		"server_repl_password": "password"
+	},
+	"java": {
+		"install_flavor": "oracle",
+		"jdk_version": "7",
+		"oracle": {
+			"accept_oracle_download_terms": true
+		}
+	},
+	"elasticsearch": {
+		"cluster": { 
+			"name": "default" 
+		}
+	},
+	"nodejs": {
+		"version": "0.10.26"
+	},
+	"run_list": [
+		"apt",
+		"build-essential",
+		"git",
+		"php",
+		"apache2",
+		"apache2::mod_php5",
+		"apache2::mod_rewrite",
+		"mysql::server",
+		"nginx",
+		"java",
+		"elasticsearch",
+		"composer",
+		"nodejs::install_from_source",
+		"rvm::system",
+		"lamp"
+	]
+}

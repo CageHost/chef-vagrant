@@ -1,0 +1,14 @@
+{
+	"__environment": "gitlab_mysql",
+	"gitlab": {
+		"env": "production",
+		"database_adapter": "mysql",
+		"database_password": "password"
+	},
+	"mysql": {
+		"server_root_password": "password"
+	},
+	"run_list": [
+		"gitlab::default"
+	]
+}
