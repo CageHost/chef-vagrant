@@ -1,5 +1,4 @@
 config.yml
 /cookbooks/
-/nodes/**/*.json
 
 .DS_Store
