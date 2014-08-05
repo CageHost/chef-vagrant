@@ -26,17 +26,17 @@ Please review the [CMD LAMP cookbook](https://github.com/cmd-cookbooks/lamp) for
 
 ## Installation
 
-#### Required Software:
+#### Requirements:
 
 - [Virtualbox](https://www.virtualbox.org/)
 - [Vagrant](http://www.vagrantup.com/)
 
-#### Installation Instructions:
+#### Installation:
 
 1. Download or clone this repository
 2. Copy config.yml.dist to config.yml, and modify your configuration variables
-  - If you don't know your public key path, [please read](https://help.github.com/articles/generating-ssh-keys).
-3. From a command line, navigate to your environment and start the server
+  - If you don't know your public key path, [create one](https://help.github.com/articles/generating-ssh-keys).
+3. From a command line, navigate to your directory and start the server
 
 #### Example Installation:
 
@@ -46,6 +46,11 @@ git clone git@github.com:cmdlabs/vagrant-chef.git
 cd vagrant-chef
 vagrant up
 ```
+
+## Managing Nodes
+
+Server configuration files are hosted in the [cmd/chef-nodes](/cmd/chef-nodes) private repository,
+and given access can be imported as a submodule via: `git submodule update --init`
 
 ## Supported Platforms
 
