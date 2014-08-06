@@ -1,4 +1,7 @@
 config.yml
+
 /cookbooks/
+
+/.vagrant
 
 .DS_Store
