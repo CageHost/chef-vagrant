@@ -1,4 +1,5 @@
-# nodejs-cookbook [![Build Status](https://travis-ci.org/redguide/nodejs.svg)](https://travis-ci.org/redguide/nodejs)
+# [nodejs-cookbook](https://github.com/redguide/nodejs)
+[![CK Version](http://img.shields.io/cookbook/v/nodejs.svg)](https://supermarket.getchef.com/cookbooks/nodejs) [![Build Status](https://img.shields.io/travis/redguide/nodejs.svg)](https://travis-ci.org/redguide/nodejs)
 
 ## DESCRIPTION
 
@@ -51,7 +52,7 @@ include_recipe "nodejs::nodejs_from_source"
 
 Npm is included in nodejs installs by default.
 By default, we are using it and call it `embedded`.
-Adding recipe `nodejs::npm` assure you to have npm installed and let you choose install method with `node['npm']['install_method']`
+Adding recipe `nodejs::npm` assure you to have npm installed and let you choose install method with `node['nodejs']['npm']['install_method']`
 ```chef
 include_recipe "nodejs::npm"
 ```

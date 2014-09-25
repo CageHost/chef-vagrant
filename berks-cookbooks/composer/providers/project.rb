@@ -29,16 +29,21 @@ end
 def make_execute(cmd)
   dev = new_resource.dev ? '--dev' : '--no-dev'
   quiet = new_resource.quiet ? '--quiet' : ''
-  optimize = new_resource.optimize_autoloader ? '--optimize' : ''
+  optimize = new_resource.optimize_autoloader ? optimize_flag(cmd) : ''
   prefer_dist = new_resource.prefer_dist ? '--prefer-dist' : ''
 
   execute "#{cmd}-composer-for-project" do
     cwd new_resource.project_dir
     command "#{node['composer']['bin']} #{cmd} --no-interaction --no-ansi #{quiet} #{dev} #{optimize} #{prefer_dist}"
+    environment 'COMPOSER_HOME' => node['composer']['install_dir']
     action :run
     only_if 'which composer'
     user new_resource.user
     group new_resource.group
     umask new_resource.umask
   end
+end
+
+def optimize_flag(cmd)
+  %(install update).include? cmd ? '--optimize-autoloader' : '--optimize'
 end
