@@ -2,8 +2,6 @@
 # Cookbook Name:: postgresql
 # Attributes:: postgresql
 #
-# Copyright 2008-2009, Opscode, Inc.
-#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -242,6 +240,9 @@ default['postgresql']['pgdg']['repo_rpm_url'] = {
       }
     },
     "centos" => {
+      "7" => {
+        "x86_64" => "http://yum.postgresql.org/9.3/redhat/rhel-7-x86_64/pgdg-centos93-9.3-1.noarch.rpm"
+      },
       "6" => {
         "i386" => "http://yum.postgresql.org/9.3/redhat/rhel-6-i386/pgdg-centos93-9.3-1.noarch.rpm",
         "x86_64" => "http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos93-9.3-1.noarch.rpm"

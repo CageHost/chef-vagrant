@@ -2,11 +2,11 @@ DEPENDENCIES
   elasticsearch
   java
   lamp
-    git: git@github.com:cmd-cookbooks/lamp.git
+    git: https://github.com/cmd-cookbooks/lamp.git
     revision: 0a50ba583e11c3265d81ffe833acbad68cbdef1d
   nginx
   redmine
-    git: git@github.com:cmd-cookbooks/redmine.git
+    git: https://github.com/cmd-cookbooks/redmine.git
     revision: b15d5b12c065131062312874ebaaebcb6f5db94c
   rvm
 
@@ -24,7 +24,7 @@ GRAPH
   bluepill (2.3.1)
     rsyslog (>= 0.0.0)
   build-essential (2.0.6)
-  chef-sugar (2.3.0)
+  chef-sugar (2.3.2)
   chef_gem (0.1.0)
   chef_handler (1.1.6)
   composer (1.0.5)
@@ -60,8 +60,7 @@ GRAPH
     php (>= 0.0.0)
     rvm (>= 0.0.0)
   logrotate (1.7.0)
-  monit (0.7.4)
-  mysql (5.5.3)
+  mysql (5.5.4)
     yum-mysql-community (>= 0.0.0)
   nginx (2.7.4)
     apt (~> 2.2)
@@ -79,14 +78,14 @@ GRAPH
   openssl (2.0.0)
     chef-sugar (>= 0.0.0)
   pacman (1.1.1)
-  php (1.4.6)
+  php (1.5.0)
     build-essential (>= 0.0.0)
     iis (>= 0.0.0)
     mysql (>= 0.0.0)
     windows (>= 0.0.0)
     xml (>= 0.0.0)
     yum-epel (>= 0.0.0)
-  postgresql (3.4.4)
+  postgresql (3.4.10)
     apt (>= 1.9.0)
     build-essential (>= 0.0.0)
     openssl (>= 0.0.0)
