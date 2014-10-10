@@ -1,7 +1,5 @@
-ip: "10.0.0.101"
-username: "username"
-webroot: "/Users/username/dev/www/"
-public_key: "/Users/username/.ssh/id_rsa.pub"
-db_password: "password"
+ip: "192.168.33.101"
+share_dir: "~/dev/www"
+password: "password"
 log_level: "auto"
 runlist: ["lamp"]

@@ -33,16 +33,13 @@ Please review the [CMD LAMP cookbook](https://github.com/cmd-cookbooks/lamp) for
 
 #### Instructions:
 
-1. Download or clone this repository
-2. Copy config.yml.dist to config.yml, and modify your configuration variables
-  - If you don't know your public key path, [create one](https://help.github.com/articles/generating-ssh-keys).
-3. From a command line, navigate to your directory and start the server
-
-#### Example:
-
+1. Install the following vagrant plugin, from the command line:
+`vagrant plugin install vagrant-omnibus`
+1. Download or clone this repository:
+`git clone git@github.com:cmdlabs/vagrant-chef.git`
+2. Copy config.yml.dist to config.yml, and update your variables
+3. From the command line, navigate to your directory and start the server
 ```
-git clone git@github.com:cmdlabs/vagrant-chef.git
-# update your config.yml
 cd vagrant-chef
 vagrant up
 ```
