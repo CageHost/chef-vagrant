@@ -30,9 +30,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         "compile_time" => true
       },
       "apache" => {
+        "listen_ports" => [
+          "8080"
+        ],
         "user" => "www-data",
         "group" => "www-data",
         "default_site_enabled" => true
+      },
+      "nginx" => {
+        "default_site_enabled" => false
       },
       "mysql" => {
         "allow_remote_root" => true,
@@ -46,12 +52,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           "post_max_size" => "128M"
         }
       },
+      "java" => {
+        "install_flavor" => "oracle",
+          "jdk_version" => "7",
+          "oracle" => {
+          "accept_oracle_download_terms" => true
+        }
+      },
+      "elasticsearch" => {
+        "cluster" => { 
+          "name" => "default" 
+        }
+      },
       "nodejs" => {
         "version" => "0.10.26"
-#      },
-#      "lamp" => {
-#        "username" => vconfig['username'],
-#        "public_key" => File.read(vconfig['public_key'])
+      },
+      "lamp" => {
+        "username" => vconfig['username'],
+        "public_key" => File.read(vconfig['public_key'])
       }
     }
     chef.run_list = vconfig['runlist']
